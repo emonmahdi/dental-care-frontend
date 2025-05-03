@@ -1,15 +1,18 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import HeroSection from "../sections/HeroSection";
 
 const Home = () => {
   return (
     <div>
       <Navbar />
-      <h2>Main Content</h2>
+      <div className="overflow-hidden">
+        <HeroSection />
+      </div>
       <Footer />
     </div>
   );
-}
+};
 
 export default Home
