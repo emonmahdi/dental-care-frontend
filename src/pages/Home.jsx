@@ -8,7 +8,9 @@ import Services from "../sections/Services";
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <div className="overflow-hidden">
+        <Navbar />
+      </div>
       <div className="overflow-hidden">
         <HeroSection />
         <ContactCard />

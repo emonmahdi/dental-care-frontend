@@ -1,33 +1,88 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
+  // Toggle mobile menu
   const toggleMenu = () => setIsOpen(!isOpen);
 
+  // Detect scroll position
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
+
+  // Attach scroll event listener
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+    <nav
+      className={`${
+        isSticky
+          ? "bg-blue-600 text-white shadow-md"
+          : "bg-transparent text-white"
+      } fixed top-0 left-0 w-full z-50 transition-all duration-300`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Left: Logo */}
-          <div className="flex-shrink-0 text-2xl font-bold text-blue-600">
+          <div className="flex-shrink-0 text-2xl font-bold">
             <Link to="/">Dental Care</Link>
           </div>
 
           {/* Center: Menu Items */}
-          <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
-            <Link to="/" className="hover:text-blue-600 transition">
+          <div className="hidden md:flex space-x-6 font-medium">
+            <Link
+              to="/"
+              className={`${
+                isSticky
+                  ? "text-white hover:text-blue-400"
+                  : "text-white hover:text-blue-600"
+              } transition`}
+            >
               Home
             </Link>
-            <Link to="/about" className="hover:text-blue-600 transition">
+            <Link
+              to="/about"
+              className={`${
+                isSticky
+                  ? "text-white hover:text-blue-400"
+                  : "text-white hover:text-blue-600"
+              } transition`}
+            >
               About
             </Link>
-            <Link to="/services" className="hover:text-blue-600 transition">
+            <Link
+              to="/services"
+              className={`${
+                isSticky
+                  ? "text-white hover:text-blue-400"
+                  : "text-white hover:text-blue-600"
+              } transition`}
+            >
               Services
             </Link>
-            <Link to="/contact" className="hover:text-blue-600 transition">
+            <Link
+              to="/contact"
+              className={`${
+                isSticky
+                  ? "text-white hover:text-blue-400"
+                  : "text-white hover:text-blue-600"
+              } transition`}
+            >
               Contact
             </Link>
           </div>
@@ -63,28 +118,28 @@ const Navbar = () => {
         <Link
           to="/"
           onClick={toggleMenu}
-          className="block text-gray-700 hover:text-blue-600"
+          className="block text-gray-800 hover:text-blue-600"
         >
           Home
         </Link>
         <Link
           to="/about"
           onClick={toggleMenu}
-          className="block text-gray-700 hover:text-blue-600"
+          className="block text-gray-800 hover:text-blue-600"
         >
           About
         </Link>
         <Link
           to="/services"
           onClick={toggleMenu}
-          className="block text-gray-700 hover:text-blue-600"
+          className="block text-gray-800 hover:text-blue-600"
         >
           Services
         </Link>
         <Link
           to="/contact"
           onClick={toggleMenu}
-          className="block text-gray-700 hover:text-blue-600"
+          className="block text-gray-800 hover:text-blue-600"
         >
           Contact
         </Link>
