@@ -5,6 +5,7 @@ import HeroSection from "../sections/HeroSection";
 import ContactCard from "../sections/ContactCard";
 import Services from "../sections/Services";
 import DentalHero from "../sections/DentalHero";
+import OurDoctors from "../sections/OurDoctors";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       </div>
       <Services />
       <DentalHero />
+      <OurDoctors />
       <Footer />
     </div>
   );
