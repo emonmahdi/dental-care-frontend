@@ -6,6 +6,8 @@ import ContactCard from "../sections/ContactCard";
 import Services from "../sections/Services";
 import DentalHero from "../sections/DentalHero";
 import OurDoctors from "../sections/OurDoctors";
+import MakeAppointment from "../sections/MakeAppointment";
+import Testimonial from "../sections/Testimonial";
 
 const Home = () => {
   return (
@@ -20,6 +22,8 @@ const Home = () => {
       <Services />
       <DentalHero />
       <OurDoctors />
+      <MakeAppointment />
+      <Testimonial />
       <Footer />
     </div>
   );
