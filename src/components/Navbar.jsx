@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
+import Button from "./Button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +33,7 @@ const Navbar = () => {
     <nav
       className={`${
         isSticky
-          ? "bg-blue-600 text-white shadow-md"
+          ? "bg-secondary text-white shadow-md"
           : "bg-transparent text-white"
       } fixed top-0 left-0 w-full z-50 transition-all duration-300`}
     >
@@ -49,8 +50,8 @@ const Navbar = () => {
               to="/"
               className={`${
                 isSticky
-                  ? "text-white hover:text-blue-400"
-                  : "text-white hover:text-blue-600"
+                  ? "text-white hover:text-primary"
+                  : "text-white hover:text-primary"
               } transition`}
             >
               Home
@@ -59,8 +60,8 @@ const Navbar = () => {
               to="/about"
               className={`${
                 isSticky
-                  ? "text-white hover:text-blue-400"
-                  : "text-white hover:text-blue-600"
+                  ? "text-white hover:text-primary"
+                  : "text-white hover:text-primary"
               } transition`}
             >
               About
@@ -69,8 +70,8 @@ const Navbar = () => {
               to="/services"
               className={`${
                 isSticky
-                  ? "text-white hover:text-blue-400"
-                  : "text-white hover:text-blue-600"
+                  ? "text-white hover:text-primary"
+                  : "text-white hover:text-primary"
               } transition`}
             >
               Services
@@ -79,8 +80,8 @@ const Navbar = () => {
               to="/contact"
               className={`${
                 isSticky
-                  ? "text-white hover:text-blue-400"
-                  : "text-white hover:text-blue-600"
+                  ? "text-white hover:text-primary"
+                  : "text-white hover:text-primary"
               } transition`}
             >
               Contact
@@ -89,11 +90,8 @@ const Navbar = () => {
 
           {/* Right: Appointment Button */}
           <div className="hidden md:flex">
-            <Link
-              to="/appointment"
-              className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
-            >
-              Book Appointment
+            <Link to="/appointment">
+              <Button>Book Appointment</Button>
             </Link>
           </div>
 

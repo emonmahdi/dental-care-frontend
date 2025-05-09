@@ -45,9 +45,12 @@ export default function Services() {
   return (
     <section className="py-16 px-4 bg-[#F4F7FB]">
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Dental Services</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+          Our Dental Services
+        </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-          Explore a wide range of modern dental care services tailored just for you.
+          Explore a wide range of modern dental care services tailored just for
+          you.
         </p>
       </div>
 
@@ -55,11 +58,9 @@ export default function Services() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
+            className="p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
           >
-            <div className="flex justify-center mb-4">
-              {service.icon}
-            </div>
+            <div className="flex justify-center mb-4">{service.icon}</div>
             <h3 className="text-xl font-semibold mb-2 text-center text-gray-800">
               {service.title}
             </h3>

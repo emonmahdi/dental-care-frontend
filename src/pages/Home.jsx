@@ -8,6 +8,7 @@ import DentalHero from "../sections/DentalHero";
 import OurDoctors from "../sections/OurDoctors";
 import MakeAppointment from "../sections/MakeAppointment";
 import Testimonial from "../sections/Testimonial";
+import Contact from "../sections/Contact";
 
 const Home = () => {
   return (
@@ -24,6 +25,7 @@ const Home = () => {
       <OurDoctors />
       <MakeAppointment />
       <Testimonial />
+      <Contact />
       <Footer />
     </div>
   );

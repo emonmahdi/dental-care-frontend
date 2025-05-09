@@ -1,5 +1,11 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@import "tailwindcss"; 
+
+@theme {
+  --color-primary: #14D1CF;  
+  --color-secondary: #3A4256;  
+  --color-primary-content: #14D1CF; /* Example text color on primary */
+}
+
 
 @layer utilities {
     .animate-fadeIn {
