@@ -3,12 +3,12 @@ import { FaPhoneAlt, FaMapMarkerAlt, FaEnvelope } from 'react-icons/fa';
 
 const contactInfo = [
   {
-    icon: <FaPhoneAlt className="w-6 h-6 text-black" />,
+    icon: <FaPhoneAlt className="w-6 h-6 text-white" />,
     title: "Phone",
     detail: "+1 (123) 456-7890",
-    bgColor: "bg-[#0FCEE1]",
-    textColor: "text-black",
-    iconBg: "bg-black/10",
+    bgColor: "bg-gradient-to-b from-[#0FCFEC] to-[#19D3AE]",
+    textColor: "text-white",
+    iconBg: "bg-white/20",
   },
   {
     icon: <FaMapMarkerAlt className="w-6 h-6 text-white" />,
@@ -19,12 +19,12 @@ const contactInfo = [
     iconBg: "bg-white/20",
   },
   {
-    icon: <FaEnvelope className="w-6 h-6 text-black" />,
+    icon: <FaEnvelope className="w-6 h-6 text-white" />,
     title: "Email",
     detail: "info@yourdomain.com",
-    bgColor: "bg-[#0FCEE1]",
-    textColor: "text-black",
-    iconBg: "bg-black/10",
+    bgColor: "bg-gradient-to-b from-[#0FCFEC] to-[#19D3AE]",
+    textColor: "text-white",
+    iconBg: "bg-white/20",
   },
 ];
 

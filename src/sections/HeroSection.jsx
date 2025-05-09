@@ -93,22 +93,26 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import Button from "../components/Button";
 
 const slides = [
   {
-    title: 'Your Smile, Our Priority',
-    subtitle: 'Professional Dental Care for You and Your Family',
-    image: 'https://img.freepik.com/free-photo/dental-cabinet-with-various-medical-equipment_140725-7678.jpg?w=740',
+    title: "Your Smile, Our Priority",
+    subtitle: "Professional Dental Care for You and Your Family",
+    image:
+      "https://img.freepik.com/free-photo/dental-cabinet-with-various-medical-equipment_140725-7678.jpg?w=740",
   },
   {
-    title: 'Gentle. Caring. Expert.',
-    subtitle: 'We Help You Shine With Confidence',
-    image: 'https://img.freepik.com/free-photo/dentist-doing-dental-treatment-intervention-senior-woman_482257-12560.jpg?w=740',
+    title: "Gentle. Caring. Expert.",
+    subtitle: "We Help You Shine With Confidence",
+    image:
+      "https://img.freepik.com/free-photo/dentist-doing-dental-treatment-intervention-senior-woman_482257-12560.jpg?w=740",
   },
   {
-    title: 'Advanced Dental Solutions',
-    subtitle: 'Modern Equipment & Friendly Staff',
-    image: 'https://img.freepik.com/free-photo/interior-modern-dentist-cabinet-medical-chair_482257-12482.jpg?w=740',
+    title: "Advanced Dental Solutions",
+    subtitle: "Modern Equipment & Friendly Staff",
+    image:
+      "https://img.freepik.com/free-photo/interior-modern-dentist-cabinet-medical-chair_482257-12482.jpg?w=740",
   },
 ];
 
@@ -120,7 +124,7 @@ export default function HeroSection() {
   };
 
   return (
-    <div className="relative w-full h-[90vh]">
+    <div className="relative w-full h-[100vh]">
       {/* Swiper Section */}
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
@@ -128,7 +132,7 @@ export default function HeroSection() {
         pagination={{ clickable: true }}
         autoplay={{ delay: 4000 }}
         loop
-        speed={800}
+        speed={900}
         className="w-full h-full"
       >
         {slides.map((slide, idx) => (
@@ -145,12 +149,13 @@ export default function HeroSection() {
                   {slide.title}
                 </h1>
                 <p className="text-lg md:text-xl mb-6">{slide.subtitle}</p>
-                <button
+                {/* <button
                   onClick={handleToggleForm}
                   className="bg-blue-500 hover:bg-blue-600 px-6 py-3 rounded-full text-white shadow-lg transition duration-300"
                 >
                   Book Appointment Now
-                </button>
+                </button> */}
+                <Button onClick={handleToggleForm}>Get Started</Button>
               </div>
             </div>
           </SwiperSlide>
@@ -179,7 +184,9 @@ export default function HeroSection() {
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 transition-all duration-300">
           <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative animate-fadeIn">
-            <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">Book an Appointment</h2>
+            <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
+              Book an Appointment
+            </h2>
             <form className="space-y-4">
               <input
                 type="text"
