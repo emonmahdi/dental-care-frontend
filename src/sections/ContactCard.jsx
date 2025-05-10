@@ -35,13 +35,15 @@ export default function ContactCard() {
         {contactInfo.map((item, index) => (
           <div
             key={index}
-            className={`${item.bgColor} ${item.textColor} shadow-lg rounded-2xl p-6 flex flex-col items-center text-center transition hover:shadow-xl`}
+            className={`${item.bgColor} ${item.textColor} shadow-lg rounded-2xl p-6 flex items-center transition hover:shadow-xl`}
           >
-            <div className={`mb-4 p-3 ${item.iconBg} rounded-full`}>
+            <div className={`p-3 ${item.iconBg} rounded-full mr-4`}>
               {item.icon}
             </div>
-            <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-sm">{item.detail}</p>
+            <div>
+              <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+              <p className="text-sm">{item.detail}</p>
+            </div>
           </div>
         ))}
       </div>
