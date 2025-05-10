@@ -1,19 +1,30 @@
 import React from 'react';
+import bg from "../assets/appointment.png"; // or your desired background image path
+import SectionTitle from "../components/SectionTitle";
 
-const Contact = () => { 
+const Contact = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section
+      className="py-16 bg-cover bg-center bg-no-repeat relative"
+      style={{ backgroundImage: `url(${bg})` }}
+    >
+      {/* Overlay */}
+      <div className="bg-cover bg-center bg-no-repeat mt-20 relative"></div>
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-4">
         {/* Section Title */}
-        <div className="text-center mb-12">
-          <h3 className="text-primary text-xl font-semibold">Contact Us</h3>
-          <h2 className="text-4xl font-bold mt-2">Stay Connected With Us</h2>
-        </div>
+        <SectionTitle
+          subtitle="Contact Us"
+          title="Stay Connected With Us"
+          textAlign="center"
+          titleColor="text-white"
+        />
 
         {/* Form + Map */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           {/* Contact Form */}
-          <form className="bg-gray-100 rounded-lg shadow-lg p-8 space-y-5">
+          <form className="bg-white bg-opacity-90 rounded-lg shadow-lg p-8 space-y-5">
             <input
               type="text"
               placeholder="Your Name"
@@ -45,7 +56,7 @@ const Contact = () => {
             </button>
           </form>
 
-          {/* Map or Info */}
+          {/* Map */}
           <div className="w-full h-96">
             <iframe
               title="Clinic Location"
