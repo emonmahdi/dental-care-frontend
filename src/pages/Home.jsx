@@ -22,8 +22,8 @@ const Home = () => {
       </div>
       <Services />
       <DentalHero />
-      <OurDoctors />
       <MakeAppointment />
+      <OurDoctors />
       <Testimonial />
       <Contact />
       <Footer />

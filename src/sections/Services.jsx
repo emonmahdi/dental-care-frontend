@@ -32,7 +32,8 @@ export default function Services() {
       <SectionTitle
         subtitle="Our Services"
         title="Services We Provide"
-        textAlign="center" // or "left", or "right"
+        textAlign="center"
+        titleColor="text-gray-600"
       />
 
       {/* <div className="max-w-6xl mx-auto text-center mb-12">
