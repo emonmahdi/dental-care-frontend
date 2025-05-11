@@ -155,7 +155,7 @@ export default function HeroSection() {
                 >
                   Book Appointment Now
                 </button> */}
-                <Button onClick={handleToggleForm}>Get Started</Button>
+                <Button onClick={handleToggleForm}>Book Appointment</Button>
               </div>
             </div>
           </SwiperSlide>

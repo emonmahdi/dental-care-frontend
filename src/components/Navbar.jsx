@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
 import Button from "./Button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  const location = useLocation();
+  const blackNavbarRoutes = [
+    "/appointment",
+    "/about",
+    "/login",
+    "/register",
+    "/reviews",
+  ];
+  const isBlackNavbar = blackNavbarRoutes.includes(location.pathname);
 
   // Toggle mobile menu
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -32,9 +42,9 @@ const Navbar = () => {
   return (
     <nav
       className={`${
-        isSticky
-          ? "bg-secondary text-white shadow-md"
-          : "bg-transparent text-white"
+        isSticky || isBlackNavbar
+          ? "bg-white text-black shadow-md"
+          : "bg-gray-800 text-white"
       } fixed top-0 left-0 w-full z-50 transition-all duration-300`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,9 +59,9 @@ const Navbar = () => {
             <Link
               to="/"
               className={`${
-                isSticky
-                  ? "text-white hover:text-primary"
-                  : "text-white hover:text-primary"
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
               } transition`}
             >
               Home
@@ -59,29 +69,39 @@ const Navbar = () => {
             <Link
               to="/about"
               className={`${
-                isSticky
-                  ? "text-white hover:text-primary"
-                  : "text-white hover:text-primary"
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
               } transition`}
             >
               About
             </Link>
             <Link
-              to="/services"
+              to="/appointment"
               className={`${
-                isSticky
-                  ? "text-white hover:text-primary"
-                  : "text-white hover:text-primary"
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
               } transition`}
             >
-              Services
+              Appointment
+            </Link>
+            <Link
+              to="/reviews"
+              className={`${
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
+              } transition`}
+            >
+              Review
             </Link>
             <Link
               to="/contact"
               className={`${
-                isSticky
-                  ? "text-white hover:text-primary"
-                  : "text-white hover:text-primary"
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
               } transition`}
             >
               Contact
@@ -91,7 +111,7 @@ const Navbar = () => {
           {/* Right: Appointment Button */}
           <div className="hidden md:flex">
             <Link to="/appointment">
-              <Button>Book Appointment</Button>
+              <Button>Login</Button>
             </Link>
           </div>
 
@@ -128,11 +148,18 @@ const Navbar = () => {
           About
         </Link>
         <Link
-          to="/services"
+          to="/appointment"
           onClick={toggleMenu}
           className="block text-gray-800 hover:text-blue-600"
         >
-          Services
+          Appointment
+        </Link>
+        <Link
+          to="/reviews"
+          onClick={toggleMenu}
+          className="block text-gray-800 hover:text-blue-600"
+        >
+          Review
         </Link>
         <Link
           to="/contact"
@@ -142,11 +169,11 @@ const Navbar = () => {
           Contact
         </Link>
         <Link
-          to="/appointment"
+          to="/login"
           onClick={toggleMenu}
           className="block bg-blue-600 text-white text-center py-2 rounded-full mt-2 hover:bg-blue-700"
         >
-          Book Appointment
+          Login
         </Link>
       </div>
     </nav>
