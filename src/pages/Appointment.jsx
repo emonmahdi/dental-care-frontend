@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import chairImage from "../assets/chair.png";
+import Button from "../components/Button";
 
 const Appointment = () => {
   const [date, setDate] = useState(new Date());
@@ -37,12 +38,16 @@ const Appointment = () => {
     setSelectedSlot(null);
   };
 
+  const handleBooking = () => {
+    console.log("Booking Successful");
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       {/* Calendar and Chair Image */}
       <div className="flex flex-col lg:flex-row justify-center items-center gap-10 mb-10">
-        <div className="w-full max-w-md p-6 rounded-lg bg-white shadow">
-          <h2 className="text-2xl font-semibold mb-4 text-center text-primary">
+        <div className="w-full max-w-md p-6 rounded-lg">
+          <h2 className="text-xl font-semibold mb-4 text-center text-primary">
             Select Appointment Date
           </h2>
           <Calendar
@@ -81,7 +86,7 @@ const Appointment = () => {
             className="bg-white p-6 rounded-lg shadow hover:shadow-md transition cursor-pointer"
             onClick={() => setSelectedService(service)}
           >
-            <h3 className="text-lg font-medium text-secondary text-center">
+            <h3 className="text-lg font-medium text-gray-800 text-center">
               {service}
             </h3>
           </div>
@@ -92,7 +97,8 @@ const Appointment = () => {
       {selectedService && (
         <div className="max-w-5xl mx-auto mt-10 bg-white p-6 rounded-lg shadow animate-fadeIn">
           <h3 className="text-xl font-semibold text-primary mb-6 text-center">
-            {selectedService} - Available Time Slots
+            {selectedService} -{" "}
+            <span className="text-gray-800"> Available Time Slots</span>
           </h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -101,13 +107,10 @@ const Appointment = () => {
                 key={idx}
                 className="border border-primary rounded-md p-4 flex flex-col items-center shadow-sm hover:shadow-md transition"
               >
-                <p className="text-primary font-medium mb-2">{slot}</p>
-                <button
-                  onClick={() => openBookingModal(slot)}
-                  className="btn bg-primary text-white hover:bg-primary/90"
-                >
+                <p className="text-gray-800 font-medium mb-2">{slot}</p>
+                <Button onClick={() => openBookingModal(slot)}>
                   Book Appointment
-                </button>
+                </Button>
               </div>
             ))}
           </div>
@@ -140,44 +143,37 @@ const Appointment = () => {
             </div>
 
             {/* Booking Form */}
-            <form className="space-y-4">
+            <form className="space-y-5 p-6 bg-white max-w-md mx-auto">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name
-                </label>
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="input input-bordered w-full"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email Address
-                </label>
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="input input-bordered w-full"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Phone Number
-                </label>
                 <input
                   type="tel"
                   placeholder="Your Phone"
-                  className="input input-bordered w-full"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn w-full bg-primary text-white hover:bg-primary/90 transition"
-              >
-                Confirm Booking
-              </button>
+              <div className="text-center pt-2">
+                <Button
+                  onClick={handleBooking}
+                  className="w-full bg-primary text-white hover:bg-primary/90 transition rounded-lg py-2"
+                >
+                  Confirm Booking
+                </Button>
+              </div>
             </form>
           </div>
         </div>

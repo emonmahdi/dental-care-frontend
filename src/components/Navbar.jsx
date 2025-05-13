@@ -110,7 +110,7 @@ const Navbar = () => {
 
           {/* Right: Appointment Button */}
           <div className="hidden md:flex">
-            <Link to="/appointment">
+            <Link to="/login">
               <Button>Login</Button>
             </Link>
           </div>
