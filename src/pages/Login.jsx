@@ -33,7 +33,7 @@ const Login = () => {
             </div>
             <p>
               New to Dental Care{" "}
-              <Link to="/" className="text-primary ms-1">
+              <Link to="/register" className="text-primary ms-1">
                 Create new Account
               </Link>{" "}
             </p>

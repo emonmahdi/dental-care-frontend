@@ -9,6 +9,10 @@ import Reviews from "../pages/Reviews";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
 
+import DashboardLayout from "../components/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
+import MyAppointment from "../pages/MyAppointment";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +25,14 @@ const router = createBrowserRouter([
       { path: "reviews", element: <Reviews /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      { index: true, element: <Dashboard /> },
+      { path: "my-appointment", element: <MyAppointment /> }, // nested route
     ],
   },
 ]);

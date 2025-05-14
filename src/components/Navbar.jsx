@@ -97,6 +97,16 @@ const Navbar = () => {
               Review
             </Link>
             <Link
+              to="/dashboard"
+              className={`${
+                isSticky || isBlackNavbar
+                  ? "text-black hover:text-primary"
+                  : "bg-gray-800 hover:text-primary"
+              } transition`}
+            >
+              Dashboard
+            </Link>
+            <Link
               to="/contact"
               className={`${
                 isSticky || isBlackNavbar
@@ -160,6 +170,13 @@ const Navbar = () => {
           className="block text-gray-800 hover:text-blue-600"
         >
           Review
+        </Link>
+        <Link
+          to="/dashboard"
+          onClick={toggleMenu}
+          className="block text-gray-800 hover:text-blue-600"
+        >
+          Dashboard
         </Link>
         <Link
           to="/contact"
