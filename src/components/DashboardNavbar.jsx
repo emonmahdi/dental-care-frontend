@@ -19,10 +19,7 @@ const DashboardNavbar = () => {
 
       {/* Right: Menu and Profile */}
       <div className="flex items-center gap-6">
-        <Link
-          to="/dashboard"
-          className="text-gray-700 hover:text-blue-600 font-medium"
-        >
+        <Link to="/" className="text-gray-700 hover:text-blue-600 font-medium">
           Home
         </Link>
         <Link

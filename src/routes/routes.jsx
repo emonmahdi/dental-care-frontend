@@ -12,6 +12,10 @@ import Register from "../pages/Register";
 import DashboardLayout from "../components/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import MyAppointment from "../pages/MyAppointment";
+import History from "../pages/History";
+import AllUsers from "../pages/AllUsers";
+import AddDoctor from "../pages/AddDoctor";
+import ManageDoctor from "../pages/ManageDoctor";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +37,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Dashboard /> },
       { path: "my-appointment", element: <MyAppointment /> }, // nested route
+      { path: "reviews", element: <Reviews /> }, // nested route
+      { path: "history", element: <History /> }, // nested route
+      { path: "all-users", element: <AllUsers /> }, // nested route
+      { path: "add-doctor", element: <AddDoctor /> }, // nested route
+      { path: "manage-doctors", element: <ManageDoctor /> }, // nested route
     ],
   },
 ]);
