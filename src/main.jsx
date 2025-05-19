@@ -5,11 +5,14 @@ import App from './App.jsx'
 import { RouterProvider } from "react-router";
 import router from "./routes/routes.jsx";
 import "react-calendar/dist/Calendar.css";
+import AuthProvider from "./Providers/AuthProvider.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </AuthProvider>
   </StrictMode>
 );
