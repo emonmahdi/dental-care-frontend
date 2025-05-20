@@ -1,11 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router";
 import { FiMenu, FiX } from "react-icons/fi";
 import Button from "./Button";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+  const { user, logOut } = useContext(AuthContext);
+  console.log("User: ", user?.email);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        console.log("User logged out successfully");
+        // Optionally redirect or show a toast
+      })
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
+  };
 
   const location = useLocation();
   const blackNavbarRoutes = [
@@ -120,9 +134,25 @@ const Navbar = () => {
 
           {/* Right: Appointment Button */}
           <div className="hidden md:flex">
-            <Link to="/login">
-              <Button>Login</Button>
-            </Link>
+            {user?.email ? (
+              <div className="flex items-center">
+                <span className="mr-3">{user?.email}</span>
+                <button
+                  onClick={handleLogOut}
+                  className="bg-primary hover:bg-secondary hover:text-white py-2 block px-4 rounded-lg cursor-pointer"
+                >
+                  Log Out
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                onClick={toggleMenu}
+                className="bg-primary hover:bg-secondary hover:text-white py-2 block px-4 rounded-lg cursor-pointer"
+              >
+                Login
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -185,13 +215,22 @@ const Navbar = () => {
         >
           Contact
         </Link>
-        <Link
-          to="/login"
-          onClick={toggleMenu}
-          className="block bg-blue-600 text-white text-center py-2 rounded-full mt-2 hover:bg-blue-700"
-        >
-          Login
-        </Link>
+        {user?.email ? (
+          <>
+            <span>{user?.email}</span>
+            <button onClick={handleLogOut} className="bg-primary py-2 block">
+              Log Out
+            </button>
+          </>
+        ) : (
+          <Link
+            to="/login"
+            onClick={toggleMenu}
+            className="bg-primary hover:bg-secondary hover:text-white py-2 block px-4 rounded-lg cursor-pointer"
+          >
+            Login
+          </Link>
+        )}
       </div>
     </nav>
   );

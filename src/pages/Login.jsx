@@ -1,21 +1,51 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
+  const navigate = useNavigate();
+
   const { signIn } = useContext(AuthContext);
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(email);
-    console.log(password);
-    signIn(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-    });
+
+    signIn(email, password)
+      .then((result) => {
+        console.log("Login success:", result.user);
+
+        // ✅ Show SweetAlert2 success message
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          text: `Welcome, ${result.user.email}`,
+          timer: 2000,
+          showConfirmButton: false,
+        });
+
+        // Redirect after a short delay (optional)
+        setTimeout(() => {
+          navigate(from, { replace: true });
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Login failed:", error.message);
+
+        // ❌ Show SweetAlert2 error message
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: error.message,
+        });
+      });
   };
 
   return (

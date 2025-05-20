@@ -16,6 +16,7 @@ import History from "../pages/History";
 import AllUsers from "../pages/AllUsers";
 import AddDoctor from "../pages/AddDoctor";
 import ManageDoctor from "../pages/ManageDoctor";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: "appointment", element: <Appointment /> },
+      {
+        path: "appointment",
+        element: (
+          <PrivateRoute>
+            <Appointment />
+          </PrivateRoute>
+        ),
+      },
       { path: "about", element: <About /> },
       { path: "contact", element: <Contact /> },
       { path: "reviews", element: <Reviews /> },
@@ -36,7 +44,14 @@ const router = createBrowserRouter([
     element: <DashboardLayout />,
     children: [
       { index: true, element: <Dashboard /> },
-      { path: "my-appointment", element: <MyAppointment /> }, // nested route
+      {
+        path: "my-appointment",
+        element: (
+          <PrivateRoute>
+            <MyAppointment />
+          </PrivateRoute>
+        ),
+      }, // nested route
       { path: "reviews", element: <Reviews /> }, // nested route
       { path: "history", element: <History /> }, // nested route
       { path: "all-users", element: <AllUsers /> }, // nested route
